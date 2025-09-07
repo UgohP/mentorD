@@ -1,10 +1,14 @@
 import mongoose from "mongoose";
-import { MONGODB_URI } from "./env.js";
+import { JWT_SECRET, MONGODB_URI } from "./env.js";
 
 if (!MONGODB_URI) {
   throw new Error(
     "Define the MONGODB_URI inside your .env<development.production>.local file"
   );
+}
+
+if (!JWT_SECRET) {
+  throw new Error("JWT_SECRET must be defined");
 }
 
 const connectDB = async () => {
